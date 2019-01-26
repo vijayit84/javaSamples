@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema targetNamespace="e2eiServiceRequest"	
+	xmlns="http://www.w3.org/2001/XMLSchema"	
+	xmlns:e2eiServiceRequest="e2eiServiceRequest"	
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"	
+	xmlns:primitiveTypes="primitiveTypes">
+
+	<import namespace="primitiveTypes" schemaLocation="primitiveTypes.xsd"/>
+
+	<annotation>
+		<documentation>e2eiServiceRequest</documentation>
+	</annotation>
+
+	<!-- Documents -->
+	<!-- Data types and elements -->
+    <!-- Structures -->
+	
+	<simpleType name="ContactAttType">
+		<annotation>
+			<documentation>ContactAttType</documentation>
+		</annotation>
+		<restriction base="xsd:string">
+			<enumeration value="PRIMARY">
+				<annotation>
+					<documentation>PRIMARY</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="SECONDARY">
+				<annotation>
+					<documentation>SECONDARY</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="BILLING">
+				<annotation>
+					<documentation>BILLING</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="SITE">
+				<annotation>
+					<documentation>SITE</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="TECHNICAL">
+				<annotation>
+					<documentation>TECHNICAL</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="SALES">
+				<annotation>
+					<documentation>SALES</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="CREDITCONTACT">
+				<annotation>
+					<documentation>CREDITCONTACT</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="ALTSITE">
+				<annotation>
+					<documentation>ALT SITE</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="SURVEY">
+				<annotation>
+					<documentation>SURVEY</documentation>
+				</annotation>
+			</enumeration>									
+			<enumeration value="EMAIL CONTACT">
+				<annotation>
+					<documentation>EMAIL CONTACT</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	
+	<complexType name="addressType">
+		<annotation>
+			<documentation>addressType</documentation>
+		</annotation>
+			<sequence>
+				<element name="addressId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="addressLine1" minOccurs="1" maxOccurs="1" type="primitiveTypes:String064"/>
+				<element name="addressLine2" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+				<element name="city" minOccurs="1" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="state" minOccurs="1" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="zipCode" minOccurs="1" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="country" minOccurs="1" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="addressValidationId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String025"/>
+				<element name="systemSpecificdata" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="AdditionAddressItems" type="e2eiServiceRequest:systemSpecificdataType" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+						<attribute name="system" type="primitiveTypes:String032" use="required"/>
+					</complexType>
+				</element>				
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+		</complexType>
+
+	<complexType name="attachmentType">
+		<annotation>
+			<documentation>attachmentType</documentation>
+		</annotation>
+			<sequence>
+				<element name="id" minOccurs="0" maxOccurs="1" type="primitiveTypes:String015"/>
+				<element name="name" minOccurs="0" maxOccurs="1" type="primitiveTypes:String254"/>
+				<element name="attachment" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation>attachment</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="url" minOccurs="1" maxOccurs="1" type="primitiveTypes:String1200"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="type" type="primitiveTypes:String100"/>
+		</complexType>
+
+	<complexType name="billingAccount">
+		<annotation>
+			<documentation>billingAccount</documentation>
+		</annotation>
+			<sequence>
+				<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="ban" minOccurs="1" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="currency" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+				<element name="country" minOccurs="0" maxOccurs="1" type="primitiveTypes:String002"/>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>contacts</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contactRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="vleRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:String004"/>
+				<element name="preferredLanguage" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+				<element name="startDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+				<element name="paymentTerms" minOccurs="0" maxOccurs="1" type="primitiveTypes:String005"/>
+				<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Allows for the collection of alternate Ids related to the account. For
+  example businessRegNumber, masterSvcAgreementNumber,
+  taxRegistrationNumber, CGIId, PONumber.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>alternateIdentifiers</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="addresses" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>addresses</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="address" minOccurs="0" maxOccurs="unbounded">
+								<annotation>
+									<documentation>address</documentation>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="addressRole" minOccurs="0" maxOccurs="1" type="primitiveTypes:String015"/>
+										<element name="addressRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="revLoc" minOccurs="0" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="revExclude" minOccurs="0" maxOccurs="1" type="primitiveTypes:String005"/>
+				<element name="revExcludeReasonCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String005"/>
+				<element name="revExcludeReason" minOccurs="0" maxOccurs="1" type="primitiveTypes:String254"/>
+				<element name="revExcludeDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+				<element name="revExcludeReleaseDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+		</complexType>
+
+	<complexType name="contactType">
+		<annotation>
+			<documentation>contactType</documentation>
+		</annotation>
+			<sequence>
+				<element name="type" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:ContactAttType"/>
+				<element name="firstName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String025"/>
+				<element name="lastName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String035"/>
+				<element name="email" minOccurs="1" maxOccurs="1" type="primitiveTypes:Email100Req"/>
+				<element name="phone" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="mobile" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="addressRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+				<element name="preferredContact" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="contactHours" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+		</complexType>
+
+	<complexType name="contractRequestType">
+		<annotation>
+			<documentation>contractRequestType</documentation>
+		</annotation>
+			<sequence>
+				<element name="contractId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String050"/>
+				<element name="contractTerm" minOccurs="1" maxOccurs="1" type="primitiveTypes:Int04"/>
+				<element name="contractRenewalType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String075"/>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+		</complexType>
+
+	<complexType name="cpeDetailsType">
+		<annotation>
+			<documentation>cpeDetailsType</documentation>
+		</annotation>
+			<sequence>
+				<element name="templateName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+				<element name="details" minOccurs="0" maxOccurs="unbounded">
+					<annotation>
+						<documentation>details</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="columnName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+							<element name="columnValue" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+							<element name="isImportable" minOccurs="0" maxOccurs="1" type="primitiveTypes:String005"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+
+	<complexType name="customerType">
+		<annotation>
+			<documentation>customerType</documentation>
+		</annotation>
+			<sequence>
+				<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Used to capture alternate identifiers for the customer (CLE).
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Possibilities are NASPID, DUNS, GUDUNS, GCHID
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>alternateIdentifiers</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="billingAccounts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of billing accounts associated with this customer.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>billingAccounts</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="billingAccount" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:billingAccount"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="locations" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of locations associated with this customer. These are
+  typically service locations, not a billing address nor head office (GCH)
+  address.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>locations</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="location" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:locationType"/>
+							<element name="fileAttachment" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:attachmentType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of contacts associated with this customer.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>contacts</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contactRef" minOccurs="0" maxOccurs="unbounded" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="revLoc" minOccurs="0" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="typeOfCustomer" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="addressRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+				<element name="marketSegment" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="solutions" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Used to capture solutions for the customer. By definition, solutions are
+  not location specific.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>solutions</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="solution" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:solutionType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="products" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Used to capture non location specific products for the customer. If the
+  product is location specific, it will be captured under the pertainent
+  location.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>products</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="product" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:productType"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+			<attribute name="customerName" type="primitiveTypes:String128"/>
+			<attribute name="customerLegalName" type="primitiveTypes:String128"/>
+		</complexType>
+
+	<complexType name="demarcType">
+		<annotation>
+			<documentation>demarcType</documentation>
+		</annotation>
+			<sequence>
+				<element name="seq" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int03"/>
+				<element name="value" minOccurs="1" maxOccurs="1" type="primitiveTypes:String016"/>
+			</sequence>
+			<attribute name="code" type="primitiveTypes:String016" use="required"/>
+		</complexType>
+
+	<complexType name="featureType">
+		<annotation>
+			<documentation>featureType</documentation>
+		</annotation>
+			<sequence>
+				<element name="instanceId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="itemName" minOccurs="1" maxOccurs="1" type="primitiveTypes:String128"/>
+				<element name="specifications" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>specifications</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="specification" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+							<element name="spec" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="features" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of Ext. features associated with the feature.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>features</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="feature" minOccurs="1" maxOccurs="unbounded" type="e2eiServiceRequest:featureType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="relations" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>relations</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="relation" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:relationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="lineItem" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>lineItem</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="lineItemName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String254"/>
+							<element name="charge" minOccurs="0" maxOccurs="unbounded">
+								<annotation>
+									<documentation>charge</documentation>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="amount" minOccurs="0" maxOccurs="1" type="primitiveTypes:Money"/>
+										<element name="chargeType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+										<element name="chargeFreq" minOccurs="0" maxOccurs="1" type="primitiveTypes:String002"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+			<attribute name="itemCode" type="primitiveTypes:String032" use="required"/>
+		</complexType>
+
+	<complexType name="identifierType">
+		<annotation>
+			<documentation>identifierType</documentation>
+		</annotation>
+			<sequence>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:String020" use="required"/>
+			<attribute name="name" type="primitiveTypes:String020" use="required"/>
+		</complexType>
+
+	<complexType name="locationType">
+		<annotation>
+			<documentation>locationType</documentation>
+		</annotation>
+			<sequence>
+				<element name="instanceId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Allows for the collection of alternate Ids for the location.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>alternateIdentifiers</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="invoiceLocationName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String140"/>
+				<element name="addressRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of contacts in relation to this data structure.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>contacts</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contactRef" minOccurs="0" maxOccurs="unbounded" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="demarcs" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>demarcs</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="demarc" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:demarcType"/>
+							<element name="extendedDemarc" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+							<element name="description" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="direction" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="demarcType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="serviceCategory" minOccurs="0" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="coloRestrictionOverrideInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String020"/>
+				<element name="products" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of location specific products related to this location.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>products</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="product" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:productType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="rowId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="dueDate" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>dueDate</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="customerDesiredDueDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+							<element name="expediteInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="ovcCompletionDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:String140"/>
+				<element name="legacyCircuitId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+			<attribute name="name" type="primitiveTypes:String140" use="required"/>
+		</complexType>
+
+	<complexType name="opportunityType">
+		<annotation>
+			<documentation>opportunityType</documentation>
+		</annotation>
+			<sequence>
+				<element name="opportunityId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="name" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="opportunityType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of alternate identifiers for the opportunity.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>alternateIdentifiers</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>contacts</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contactRef" minOccurs="0" maxOccurs="unbounded" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+		</complexType>
+
+	<complexType name="productType">
+		<annotation>
+			<documentation>productType</documentation>
+		</annotation>
+			<sequence>
+				<element name="instanceId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="itemName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String128"/>
+				<element name="itemGroupCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="billingAccount" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>billingAccount</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="billingAccountRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+							<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="currency" minOccurs="1" maxOccurs="1" type="primitiveTypes:String003"/>
+							<element name="country" minOccurs="1" maxOccurs="1" type="primitiveTypes:String002"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="solutions" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Lists the solutions to which this product is associated.
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+  This information is deliberately stored redundantly to provide ease of
+  use for a consumer.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>solutions</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="solutionRef" minOccurs="0" maxOccurs="unbounded" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="features" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  A collection of features associated with the product.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>features</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="feature" minOccurs="1" maxOccurs="unbounded" type="e2eiServiceRequest:featureType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="specifications" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>specifications</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="specification" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+							<element name="spec" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="rowId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="dueDate" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>dueDate</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="customerDesiredDueDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+							<element name="expediteInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="relations" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>relations</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="relation" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:relationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="contract" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>contract</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contractRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+							<element name="sofId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="sofStatus" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="serviceOrderId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="cpeDetails" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:cpeDetailsType"/>
+				<element name="solutionType" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+				<element name="quoteLocationName" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09" use="required"/>
+			<attribute name="itemCode" type="primitiveTypes:String032" use="required"/>
+		</complexType>
+
+	<complexType name="quoteType">
+		<annotation>
+			<documentation>quoteType</documentation>
+		</annotation>
+			<sequence>
+				<element name="quoteId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="quoteName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+				<element name="contractVle" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:vleType"/>
+				<element name="quoteLanguageCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+				<element name="quoteDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+				<element name="opportunity" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:opportunityType"/>
+				<element name="orderingCustomerRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+				<element name="contractingCustomerRef" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int09"/>
+				<element name="contractRequest" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:contractRequestType"/>
+				<element name="systemSpecificdata" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="AdditionQuoteDetails" type="e2eiServiceRequest:systemSpecificdataType" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+						<attribute name="system" type="primitiveTypes:String032" use="required"/>
+					</complexType>
+				</element>				
+			</sequence>
+		</complexType>
+
+	<complexType name="relationType">
+		<annotation>
+			<documentation>relationType</documentation>
+		</annotation>
+			<sequence>
+				<element name="relatedItemItemType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+				<element name="relatedItemItemCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+			</sequence>
+			<attribute name="relationType" type="primitiveTypes:String032" use="required"/>
+			<attribute name="relatedItemId" type="primitiveTypes:String064"/>
+		</complexType>
+		
+	<complexType name="solutionType">
+		<annotation>
+			<documentation>solutionType</documentation>
+		</annotation>
+			<sequence>
+				<element name="instanceId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="itemName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String128"/>
+				<element name="specifications" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>specifications</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="specification" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="rowId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String040"/>
+				<element name="products" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Indicates the list of products associated with this solution. This
+  information is deliberately stored redundantly to provide ease of use
+  for a consumer.
+&lt;/p&gt;</documentation>
+						<appinfo>
+							<label>products</label>
+						</appinfo>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="productRef" minOccurs="0" maxOccurs="unbounded" type="primitiveTypes:Int09"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+				<element name="dueDate" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>dueDate</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="customerDesiredDueDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+							<element name="expediteInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="id" type="primitiveTypes:Int09"/>
+			<attribute name="itemCode" type="primitiveTypes:String032" use="required"/>
+		</complexType>
+
+	<complexType name="specificationType">
+		<annotation>
+			<documentation>specificationType</documentation>
+		</annotation>
+			<sequence>
+				<element name="value" minOccurs="1" maxOccurs="1" type="primitiveTypes:String100"/>
+				<element name="isImportable" minOccurs="0" maxOccurs="1" type="primitiveTypes:String005"/>
+				<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+			</sequence>
+			<attribute name="code" type="primitiveTypes:String050" use="required"/>
+		</complexType>
+
+	<complexType name="vleType">
+		<annotation>
+			<documentation>vleType</documentation>
+		</annotation>
+			<sequence>
+				<element name="vleId" minOccurs="1" maxOccurs="1" type="primitiveTypes:String004"/>
+				<element name="vleName" minOccurs="0" maxOccurs="1" type="primitiveTypes:String128"/>
+			</sequence>
+		</complexType>
+
+	<complexType name="milestoneType">
+		<sequence>
+			<element name="PARAM_NAME" type="string"/>
+			<element name="PARAM_VALUE" type="string"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="systemSpecificdataType">
+		<annotation>
+			<documentation>Other systemSpecificdata not related to PQ</documentation>
+		</annotation>
+		<sequence>
+			<element name="itemCode" type="primitiveTypes:String100"/>
+			<element name="itemValue" type="primitiveTypes:String100"/>
+		</sequence>
+	</complexType>
+	
+	<!-- Service Request -->
+	<element name="serviceRequest">
+		<complexType >
+		<annotation>
+			<documentation>serviceRequest</documentation>
+		</annotation>
+			<sequence>
+				<element name="header" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>header</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="messageId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String025"/>
+							<element name="messageTimestamp" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+							<element name="requestType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+							<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="suppType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="sourceSystem" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+							<element name="requestDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+							<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+								<annotation>
+									<documentation>
+  Used to capture alternate identifiers for the customer (CLE).
+  Possibilities are NASPID, DUNS, GUDUNS, GCHID
+									</documentation>
+									<appinfo>
+										<label>alternateIdentifiers</label>
+									</appinfo>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="pricingScenarioId" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int10"/>
+							<element name="priceBookId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+							<element name="customerOrderNumber" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="purchaseOrderNumber" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="TSPCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="reasonCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="comments" minOccurs="0" maxOccurs="1" type="primitiveTypes:String2K"/>
+							<element name="dueDate" minOccurs="0" maxOccurs="1">
+								<annotation>
+									<documentation>dueDate</documentation>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="customerDesiredDueDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+										<element name="expediteInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="userId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String020"/>
+						</sequence>
+						<attribute name="schemaVersion" type="xsd:decimal"/>
+					</complexType>
+				</element>
+				<element name="quote" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:quoteType"/>
+				<element name="customers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>customers</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="customer" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:customerType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="addresses" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:addressType"/>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>contacts</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contact" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:contactType"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Service Response -->
+	<element name="serviceResponse">
+		<complexType >
+		<annotation>
+			<documentation>serviceResponse</documentation>
+		</annotation>
+			<sequence>
+				<element name="header" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>header</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="messageId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String025"/>
+							<element name="messageTimestamp" minOccurs="0" maxOccurs="1" type="primitiveTypes:String064"/>
+							<element name="requestType" minOccurs="0" maxOccurs="1" type="primitiveTypes:String003"/>
+							<element name="actionCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="sourceSystem" minOccurs="0" maxOccurs="1" type="primitiveTypes:String032"/>
+							<element name="requestDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+							<element name="alternateIdentifiers" minOccurs="0" maxOccurs="1">
+								<annotation>
+									<documentation>&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Used to capture alternate identifiers for the customer (CLE).
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+
+&lt;/p&gt;
+&lt;p style=&#34;margin-top: 0&#34;&gt;
+  Possibilities are NASPID, DUNS, GUDUNS, GCHID
+&lt;/p&gt;</documentation>
+									<appinfo>
+										<label>alternateIdentifiers</label>
+									</appinfo>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="identifier" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:specificationType"/>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="pricingScenarioId" minOccurs="0" maxOccurs="1" type="primitiveTypes:Int10"/>
+							<element name="priceBookId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+							<element name="customerOrderNumber" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="purchaseOrderNumber" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="orderRequestId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="TSPCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="reasonCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="comments" minOccurs="0" maxOccurs="1" type="primitiveTypes:String2K"/>
+							<element name="dueDate" minOccurs="0" maxOccurs="1">
+								<annotation>
+									<documentation>dueDate</documentation>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="customerDesiredDueDate" minOccurs="0" maxOccurs="1" type="primitiveTypes:DateMM-DD-YYYY"/>
+										<element name="expediteInd" minOccurs="0" maxOccurs="1" type="primitiveTypes:String001"/>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="systemSpecificdata" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="AdditionHeaderDetails" type="e2eiServiceRequest:systemSpecificdataType" minOccurs="0" maxOccurs="unbounded"/>
+									</sequence>
+									<attribute name="system" type="primitiveTypes:String032" use="required"/>
+								</complexType>
+							</element>							
+						</sequence>
+						<attribute name="schemaVersion" type="xsd:decimal"/>
+					</complexType>
+				</element>
+				<element name="statusCode" minOccurs="0" maxOccurs="1" type="primitiveTypes:String010"/>
+				<element name="statusDesc" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+				<element name="errors" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>errors</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="description" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+							<element name="system" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+							<element name="error" minOccurs="0" maxOccurs="unbounded">
+								<annotation>
+									<documentation>error</documentation>
+								</annotation>
+								<complexType>
+									<sequence>
+										<element name="description" minOccurs="0" maxOccurs="1" type="primitiveTypes:String100"/>
+										<element name="productId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+										<element name="instanceId" minOccurs="0" maxOccurs="1" type="primitiveTypes:String016"/>
+									</sequence>
+									<attribute name="code" type="primitiveTypes:String020"/>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="code" type="primitiveTypes:String020"/>
+					</complexType>
+				</element>
+				<element name="quote" minOccurs="0" maxOccurs="1" type="e2eiServiceRequest:quoteType"/>
+				<element name="customers" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>customers</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="customer" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:customerType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="addresses" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:addressType"/>
+				<element name="contacts" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>contacts</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="contact" minOccurs="0" maxOccurs="unbounded" type="e2eiServiceRequest:contactType"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="milestone" minOccurs="0">
+					<annotation>
+						<documentation>Order Milestone</documentation>
+					</annotation>
+					<complexType>
+						<sequence>
+							<element name="PARAM" type="e2eiServiceRequest:milestoneType" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>				
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

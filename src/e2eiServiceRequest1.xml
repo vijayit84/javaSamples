@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e2eiServiceRequest:serviceRequest xmlns:e2eiServiceRequest="e2eiServiceRequest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="e2eiServiceRequest e2eiServiceRequest.xsd ">
+  <header schemaVersion="0.0">
+    <messageId>messageId</messageId>
+    <messageTimestamp>messageTimestamp</messageTimestamp>
+    <requestType>requestType</requestType>
+    <actionCode>actionCode</actionCode>
+    <suppType>suppType</suppType>
+    <sourceSystem>sourceSystem</sourceSystem>
+    <requestDate>requestDate</requestDate>
+    <alternateIdentifiers>
+      <identifier code="">
+        <value>value</value>
+        <isImportable>isImportable</isImportable>
+        <actionCode>actionCode</actionCode>
+      </identifier>
+    </alternateIdentifiers>
+    <pricingScenarioId>pricingScenarioId</pricingScenarioId>
+    <priceBookId>priceBookId</priceBookId>
+    <customerOrderNumber>customerOrderNumber</customerOrderNumber>
+    <purchaseOrderNumber>purchaseOrderNumber</purchaseOrderNumber>
+    <TSPCode>TSPCode</TSPCode>
+    <reasonCode>reasonCode</reasonCode>
+    <comments>comments</comments>
+    <dueDate>
+      <customerDesiredDueDate>customerDesiredDueDate</customerDesiredDueDate>
+      <expediteInd>expediteInd</expediteInd>
+    </dueDate>
+    <userId>userId</userId>
+  </header>
+  <quote>
+    <quoteId>quoteId</quoteId>
+    <quoteName>quoteName</quoteName>
+    <contractVle>
+      <vleId>vleId</vleId>
+      <vleName>vleName</vleName>
+    </contractVle>
+    <quoteLanguageCode>quoteLanguageCode</quoteLanguageCode>
+    <quoteDate>quoteDate</quoteDate>
+    <opportunity id="">
+      <opportunityId>opportunityId</opportunityId>
+      <name>name</name>
+      <opportunityType>opportunityType</opportunityType>
+      <alternateIdentifiers>
+        <identifier code="">
+          <value>value</value>
+          <isImportable>isImportable</isImportable>
+          <actionCode>actionCode</actionCode>
+        </identifier>
+      </alternateIdentifiers>
+      <contacts>
+        <contactRef>contactRef</contactRef>
+      </contacts>
+    </opportunity>
+    <orderingCustomerRef>orderingCustomerRef</orderingCustomerRef>
+    <contractingCustomerRef>contractingCustomerRef</contractingCustomerRef>
+    <contractRequest id="">
+      <contractId>contractId</contractId>
+      <contractTerm>contractTerm</contractTerm>
+      <contractRenewalType>contractRenewalType</contractRenewalType>
+    </contractRequest>
+    <systemSpecificdata system="">
+      <AdditionQuoteDetails>
+        <itemCode>itemCode</itemCode>
+        <itemValue>itemValue</itemValue>
+      </AdditionQuoteDetails>
+    </systemSpecificdata>
+  </quote>
+  <customers>
+    <customer customerLegalName="" customerName="" id="">
+      <alternateIdentifiers>
+        <identifier code="">
+          <value>value</value>
+          <isImportable>isImportable</isImportable>
+          <actionCode>actionCode</actionCode>
+        </identifier>
+      </alternateIdentifiers>
+      <billingAccounts>
+        <billingAccount id="">
+          <actionCode>actionCode</actionCode>
+          <ban>ban</ban>
+          <currency>currency</currency>
+          <country>country</country>
+          <contacts>
+            <contactRef>contactRef</contactRef>
+          </contacts>
+          <vleRef>vleRef</vleRef>
+          <preferredLanguage>preferredLanguage</preferredLanguage>
+          <startDate>startDate</startDate>
+          <paymentTerms>paymentTerms</paymentTerms>
+          <alternateIdentifiers>
+            <identifier code="">
+              <value>value</value>
+              <isImportable>isImportable</isImportable>
+              <actionCode>actionCode</actionCode>
+            </identifier>
+          </alternateIdentifiers>
+          <addresses>
+            <address>
+              <addressRole>addressRole</addressRole>
+              <addressRef>addressRef</addressRef>
+            </address>
+          </addresses>
+          <revLoc>revLoc</revLoc>
+          <revExclude>revExclude</revExclude>
+          <revExcludeReasonCode>revExcludeReasonCode</revExcludeReasonCode>
+          <revExcludeReason>revExcludeReason</revExcludeReason>
+          <revExcludeDate>revExcludeDate</revExcludeDate>
+          <revExcludeReleaseDate>revExcludeReleaseDate</revExcludeReleaseDate>
+        </billingAccount>
+      </billingAccounts>
+      <locations>
+        <location id="" name="">
+          <instanceId>instanceId</instanceId>
+          <alternateIdentifiers>
+            <identifier code="">
+              <value>value</value>
+              <isImportable>isImportable</isImportable>
+              <actionCode>actionCode</actionCode>
+            </identifier>
+          </alternateIdentifiers>
+          <invoiceLocationName>invoiceLocationName</invoiceLocationName>
+          <addressRef>addressRef</addressRef>
+          <contacts>
+            <contactRef>contactRef</contactRef>
+          </contacts>
+          <demarcs>
+            <demarc code="">
+              <seq>seq</seq>
+              <value>value</value>
+            </demarc>
+            <extendedDemarc>extendedDemarc</extendedDemarc>
+            <description>description</description>
+            <direction>direction</direction>
+            <demarcType>demarcType</demarcType>
+          </demarcs>
+          <serviceCategory>serviceCategory</serviceCategory>
+          <coloRestrictionOverrideInd>coloRestrictionOverrideInd</coloRestrictionOverrideInd>
+          <products>
+            <product id="" itemCode="">
+              <instanceId>instanceId</instanceId>
+              <itemName>itemName</itemName>
+              <itemGroupCode>itemGroupCode</itemGroupCode>
+              <billingAccount>
+                <billingAccountRef>billingAccountRef</billingAccountRef>
+                <actionCode>actionCode</actionCode>
+                <currency>currency</currency>
+                <country>country</country>
+              </billingAccount>
+              <solutions>
+                <solutionRef>solutionRef</solutionRef>
+              </solutions>
+              <features>
+                <feature id="" itemCode="">
+                  <instanceId>instanceId</instanceId>
+                  <itemName>itemName</itemName>
+                  <specifications>
+                    <specification code="">
+                      <value>value</value>
+                      <isImportable>isImportable</isImportable>
+                      <actionCode>actionCode</actionCode>
+                    </specification>
+                    <spec code="">
+                      <value>value</value>
+                      <isImportable>isImportable</isImportable>
+                      <actionCode>actionCode</actionCode>
+                    </spec>
+                  </specifications>
+                  <features>
+                    <feature id="" itemCode=""/>
+                  </features>
+                  <actionCode>actionCode</actionCode>
+                  <relations>
+                    <relation relatedItemId="" relationType="">
+                      <relatedItemItemType>relatedItemItemType</relatedItemItemType>
+                      <relatedItemItemCode>relatedItemItemCode</relatedItemItemCode>
+                    </relation>
+                  </relations>
+                  <lineItem>
+                    <lineItemName>lineItemName</lineItemName>
+                    <charge>
+                      <amount>amount</amount>
+                      <chargeType>chargeType</chargeType>
+                      <chargeFreq>chargeFreq</chargeFreq>
+                    </charge>
+                  </lineItem>
+                </feature>
+              </features>
+              <specifications>
+                <specification code="">
+                  <value>value</value>
+                  <isImportable>isImportable</isImportable>
+                  <actionCode>actionCode</actionCode>
+                </specification>
+                <spec code="">
+                  <value>value</value>
+                  <isImportable>isImportable</isImportable>
+                  <actionCode>actionCode</actionCode>
+                </spec>
+              </specifications>
+              <rowId>rowId</rowId>
+              <actionCode>actionCode</actionCode>
+              <dueDate>
+                <customerDesiredDueDate>customerDesiredDueDate</customerDesiredDueDate>
+                <expediteInd>expediteInd</expediteInd>
+              </dueDate>
+              <relations>
+                <relation relatedItemId="" relationType="">
+                  <relatedItemItemType>relatedItemItemType</relatedItemItemType>
+                  <relatedItemItemCode>relatedItemItemCode</relatedItemItemCode>
+                </relation>
+              </relations>
+              <contract>
+                <contractRef>contractRef</contractRef>
+                <sofId>sofId</sofId>
+                <sofStatus>sofStatus</sofStatus>
+              </contract>
+              <serviceOrderId>serviceOrderId</serviceOrderId>
+              <cpeDetails>
+                <templateName>templateName</templateName>
+                <details>
+                  <columnName>columnName</columnName>
+                  <columnValue>columnValue</columnValue>
+                  <isImportable>isImportable</isImportable>
+                </details>
+              </cpeDetails>
+              <solutionType>solutionType</solutionType>
+              <quoteLocationName>quoteLocationName</quoteLocationName>
+            </product>
+          </products>
+          <rowId>rowId</rowId>
+          <dueDate>
+            <customerDesiredDueDate>customerDesiredDueDate</customerDesiredDueDate>
+            <expediteInd>expediteInd</expediteInd>
+          </dueDate>
+          <ovcCompletionDate>ovcCompletionDate</ovcCompletionDate>
+          <legacyCircuitId>legacyCircuitId</legacyCircuitId>
+        </location>
+        <fileAttachment type="">
+          <id>id</id>
+          <name>name</name>
+          <attachment>
+            <url>url</url>
+          </attachment>
+        </fileAttachment>
+      </locations>
+      <contacts>
+        <contactRef>contactRef</contactRef>
+      </contacts>
+      <revLoc>revLoc</revLoc>
+      <typeOfCustomer>typeOfCustomer</typeOfCustomer>
+      <addressRef>addressRef</addressRef>
+      <marketSegment>marketSegment</marketSegment>
+      <solutions>
+        <solution id="" itemCode="">
+          <instanceId>instanceId</instanceId>
+          <itemName>itemName</itemName>
+          <specifications>
+            <specification code="">
+              <value>value</value>
+              <isImportable>isImportable</isImportable>
+              <actionCode>actionCode</actionCode>
+            </specification>
+          </specifications>
+          <rowId>rowId</rowId>
+          <products>
+            <productRef>productRef</productRef>
+          </products>
+          <actionCode>actionCode</actionCode>
+          <dueDate>
+            <customerDesiredDueDate>customerDesiredDueDate</customerDesiredDueDate>
+            <expediteInd>expediteInd</expediteInd>
+          </dueDate>
+        </solution>
+      </solutions>
+      <products>
+        <product id="" itemCode="">
+          <instanceId>instanceId</instanceId>
+          <itemName>itemName</itemName>
+          <itemGroupCode>itemGroupCode</itemGroupCode>
+          <billingAccount>
+            <billingAccountRef>billingAccountRef</billingAccountRef>
+            <actionCode>actionCode</actionCode>
+            <currency>currency</currency>
+            <country>country</country>
+          </billingAccount>
+          <solutions>
+            <solutionRef>solutionRef</solutionRef>
+          </solutions>
+          <features>
+            <feature id="" itemCode="">
+              <instanceId>instanceId</instanceId>
+              <itemName>itemName</itemName>
+              <specifications>
+                <specification code="">
+                  <value>value</value>
+                  <isImportable>isImportable</isImportable>
+                  <actionCode>actionCode</actionCode>
+                </specification>
+                <spec code="">
+                  <value>value</value>
+                  <isImportable>isImportable</isImportable>
+                  <actionCode>actionCode</actionCode>
+                </spec>
+              </specifications>
+              <features>
+                <feature id="" itemCode=""/>
+              </features>
+              <actionCode>actionCode</actionCode>
+              <relations>
+                <relation relatedItemId="" relationType="">
+                  <relatedItemItemType>relatedItemItemType</relatedItemItemType>
+                  <relatedItemItemCode>relatedItemItemCode</relatedItemItemCode>
+                </relation>
+              </relations>
+              <lineItem>
+                <lineItemName>lineItemName</lineItemName>
+                <charge>
+                  <amount>amount</amount>
+                  <chargeType>chargeType</chargeType>
+                  <chargeFreq>chargeFreq</chargeFreq>
+                </charge>
+              </lineItem>
+            </feature>
+          </features>
+          <specifications>
+            <specification code="">
+              <value>value</value>
+              <isImportable>isImportable</isImportable>
+              <actionCode>actionCode</actionCode>
+            </specification>
+            <spec code="">
+              <value>value</value>
+              <isImportable>isImportable</isImportable>
+              <actionCode>actionCode</actionCode>
+            </spec>
+          </specifications>
+          <rowId>rowId</rowId>
+          <actionCode>actionCode</actionCode>
+          <dueDate>
+            <customerDesiredDueDate>customerDesiredDueDate</customerDesiredDueDate>
+            <expediteInd>expediteInd</expediteInd>
+          </dueDate>
+          <relations>
+            <relation relatedItemId="" relationType="">
+              <relatedItemItemType>relatedItemItemType</relatedItemItemType>
+              <relatedItemItemCode>relatedItemItemCode</relatedItemItemCode>
+            </relation>
+          </relations>
+          <contract>
+            <contractRef>contractRef</contractRef>
+            <sofId>sofId</sofId>
+            <sofStatus>sofStatus</sofStatus>
+          </contract>
+          <serviceOrderId>serviceOrderId</serviceOrderId>
+          <cpeDetails>
+            <templateName>templateName</templateName>
+            <details>
+              <columnName>columnName</columnName>
+              <columnValue>columnValue</columnValue>
+              <isImportable>isImportable</isImportable>
+            </details>
+          </cpeDetails>
+          <solutionType>solutionType</solutionType>
+          <quoteLocationName>quoteLocationName</quoteLocationName>
+        </product>
+      </products>
+    </customer>
+  </customers>
+  <addresses id="">
+    <addressId>addressId</addressId>
+    <addressLine1>addressLine1</addressLine1>
+    <addressLine2>addressLine2</addressLine2>
+    <city>city</city>
+    <state>state</state>
+    <zipCode>zipCode</zipCode>
+    <country>country</country>
+    <addressValidationId>addressValidationId</addressValidationId>
+    <systemSpecificdata system="">
+      <AdditionAddressItems>
+        <itemCode>itemCode</itemCode>
+        <itemValue>itemValue</itemValue>
+      </AdditionAddressItems>
+    </systemSpecificdata>
+  </addresses>
+  <contacts>
+    <contact id="">
+      <type>PRIMARY</type>
+      <firstName>firstName</firstName>
+      <lastName>lastName</lastName>
+      <email>email</email>
+      <phone>phone</phone>
+      <mobile>mobile</mobile>
+      <addressRef>addressRef</addressRef>
+      <preferredContact>preferredContact</preferredContact>
+      <contactHours>contactHours</contactHours>
+    </contact>
+  </contacts>
+</e2eiServiceRequest:serviceRequest>
