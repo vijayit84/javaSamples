@@ -40,14 +40,10 @@ stage("Deploy")
    }
 
 }
-    post {
-       
-        failure {
-            mail to:vijay.it84@gmail.com, subject: 'The Pipeline failed :('
-        }
+       post {
         success
        {
-          mail to :vijay.it84@gmail.com, subject:'The Pipeline Success :)'
+          mail to :vijay.it84@gmail.com, subject:'The Pipeline Success '
        }
     }
 
