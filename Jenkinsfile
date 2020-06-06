@@ -43,7 +43,7 @@ stage("Deploy")
        post {
         success
        {
-          mail to :vijay.it84@gmail.com, subject:'The Pipeline Success '
+        eco "Success Job"
        }
     }
 
