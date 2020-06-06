@@ -43,7 +43,7 @@ stage("Deploy")
     post {
        
         failure {
-            mail to: vijay.it84@gmail.com, subject: 'The Pipeline failed :('
+            mail to:vijay.it84@gmail.com, subject: 'The Pipeline failed :('
         }
         success
        {
