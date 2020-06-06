@@ -2,8 +2,10 @@ pipeline
 {
 agent any
        parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
-    }
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?'),
+        choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: 'select Choices')        
+       
+       }
 
    environment
    {
@@ -43,7 +45,7 @@ stage("Deploy")
        post {
         success
        {
-        eco "Success Job"
+        echo "Success Job"
        }
     }
 
